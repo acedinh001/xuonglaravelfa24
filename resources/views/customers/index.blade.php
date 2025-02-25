@@ -10,7 +10,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Address</th>
+                    <th scope="col">Adress</th>
                     <th scope="col">Avatar</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
@@ -25,7 +25,7 @@
                     <tr class="">
                         <td scope="row">{{ $customer->id }}</td>
                         <td>{{ $customer->name }}</td>
-                        <td>{{ $customer->address }}</td>
+                        <td>{{ $customer->adress }}</td>
                         <td>
                             <img src="{{ Storage::url($customer->avatar) }}" alt="" width="100px">
                         </td>
@@ -41,7 +41,16 @@
                         </td>
                         <td>{{ $customer->created_at }}</td>
                         <td>{{ $customer->updated_at }}</td>
-                        <td></td>
+                        <td>
+                            <a class="btn btn-secondary" href="{{ route('customers.show', $customer) }}"
+                                role="button">Show</a>
+                            <a class="btn btn-success" href="{{ route('customers.edit', $customer) }}"
+                                role="button">Update</a>
+                            <a class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn thực hiện thao tác?')"
+                                href="{{ route('customers.destroy', $customer) }}" role="button">XC</a>
+                            <a class="btn btn-dark" onclick="return confirm('Bạn có chắc muốn thực hiện thao tác?')"
+                                href="{{ route('customers.forceDestroy', $customer) }}" role="button">XM</a>
+                        </td>
                     </tr>
                 @endforeach
 
